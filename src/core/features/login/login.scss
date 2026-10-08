@@ -1,0 +1,395 @@
+@use "src/theme/globals" as *;
+
+:host {
+    ion-content,
+    ion-list {
+        --background: var(--core-login-background);
+        --ion-item-background: var(--core-login-background);
+        --color: var(--core-login-text-color);
+    }
+
+    ion-item ion-label {
+        --color: var(--core-login-text-color);
+
+        p, h2, h3, .core-oauth-icon {
+            color: var(--color);
+        }
+    }
+
+    ion-button.core-button-as-link {
+        --color: var(--core-login-text-color);
+        text-decoration-color: var(--color);
+    }
+
+    core-alert-card.core-login-reconnect-warning {
+        --alert-card-margin-top: 0px;
+        --alert-card-margin-bottom: 32px;
+        --alert-card-margin-left: 0px;
+        --alert-card-margin-right: 0px;
+    }
+
+    .core-login-info-box {
+        margin-bottom: 32px;
+
+        .core-login-site {
+            core-site-logo {
+                --core-site-logo-max-height: 104px;
+                --core-site-logo-sitename-margin-bottom: 8px;
+                --core-site-logo-sitename-font: var(--mdl-typography-subtitle-font-lg);
+
+                --core-site-logo-max-width: 300px;
+                --core-site-logo-width: 90%;
+                --core-site-logo-margin: 0 auto;
+            }
+
+            .core-siteurl {
+                margin-top: 8px;
+                margin-bottom: 0px;
+            }
+
+            // Minimalist branding for fixed sites (logo from moodle.config.json).
+            .ca-cred-brand {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .ca-cred-logo {
+                    width: 88px;
+                    height: 88px;
+                    border-radius: 24px;
+                    background: #fff;
+                    box-shadow: rgba(0, 0, 0, 0.05) 0 0 0 1px, rgba(0, 0, 0, 0.06) 0 8px 24px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    overflow: hidden;
+                    margin-bottom: 16px;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        padding: 14px;
+                        object-fit: contain;
+                        object-position: center;
+                    }
+                }
+
+                .ca-cred-sitename {
+                    margin: 0;
+                    font-size: 1.4rem;
+                    font-weight: 700;
+                    color: var(--core-login-text-color);
+                }
+
+                .core-siteurl {
+                    margin-top: 6px;
+                }
+            }
+        }
+
+        .core-login-site + .core-login-user {
+            margin-top: 24px;
+        }
+    }
+
+    core-user-avatar.large-avatar {
+        --core-avatar-size: var(--core-large-avatar-size);
+    }
+
+    .core-login-fullname {
+        margin-top: 8px;
+        margin-bottom: 0px;
+    }
+
+    .core-login-methods {
+        form .item,
+        form .item ion-label {
+            --background: var(--core-login-input-background);
+            --color: var(--core-login-input-color);
+        }
+    }
+
+    ion-button {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .core-login-forgotten-password {
+        text-decoration: underline;
+    }
+
+    @if ($core-login-hide-forgot-password) {
+        .core-login-forgotten-password {
+            display: none;
+        }
+    }
+
+    @if ($core-fixed-url) {
+        .core-siteurl {
+            display: none;
+        }
+        core-site-logo {
+            --core-site-logo-sitename-display: none;
+        }
+    }
+
+    @if ($core-login-button-outline) {
+        form ion-button {
+            --background: white;
+            --color: var(--core-login-background);
+        }
+    }
+
+    @if ($core-login-loading-color) {
+        core-loading {
+            --loading-background: var(--core-login-background);
+            --loading-text-color: #{$core-login-loading-color};
+            --loading-spinner: #{$core-login-loading-color};
+        }
+    }
+
+    .core-login-methods-separator {
+        position: relative;
+        padding: 8px 0;
+
+        span {
+            background: var(--core-login-background);
+            padding: 0 8px;
+        }
+
+        &::before {
+            height: 1px;
+            position: absolute;
+            top: 50%;
+            left: 0px;
+            right: 0px;
+            border-bottom: 1px solid var(--gray-300);
+            content: "";
+            z-index: -1;
+        }
+    }
+
+
+    @if ($core-login-hide-qrcode) {
+        .core-login-site-qrcode,
+        .core-login-methods-separator {
+            display: none;
+        }
+    }
+
+    .core-login-login-button {
+        margin-top: 32px;
+    }
+
+    .core-login-login-inbrowser-button {
+        margin-bottom: 8px;
+    }
+
+    p.core-login-inbrowser {
+        font: var(--mdl-typography-body-font-sm);
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+
+    .core-login-sign-up {
+        margin-top: 8px;
+        border-top: 1px solid var(--gray-300);
+    }
+
+    .core-login-identity-providers h2,
+    .core-login-sign-up h2 {
+        margin-top: 16px;
+        margin-bottom: 8px;
+        font: var(--mdl-typography-heading6-font);
+    }
+
+    // ---- Cámara Alemana credentials redesign ----
+    --ca-cred-muted: #8a93a6;
+    --ca-cred-title: #1f2a44;
+    --ca-cred-card: #ffffff;
+
+    .ca-cred-header {
+        ion-toolbar {
+            --border-width: 0 !important;
+            --border-color: transparent;
+        }
+
+        .ca-cred-header-title {
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--ca-cred-muted);
+        }
+    }
+
+    // Brand block.
+    .ca-cred-subtitle {
+        margin: 6px 0 0;
+        font-size: 0.95rem;
+        color: var(--ca-cred-muted);
+    }
+
+    .ca-cred-urlpill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 16px;
+        padding: 8px 16px;
+        border-radius: 999px;
+        background: var(--ca-cred-card);
+        box-shadow: rgba(0, 0, 0, 0.05) 0 0 0 1px, rgba(0, 0, 0, 0.04) 0 4px 12px;
+        font-size: 0.9rem;
+        color: var(--ca-cred-title);
+
+        .ca-cred-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #34c759;
+            flex-shrink: 0;
+        }
+    }
+
+    // Form fields.
+    .ca-cred-form {
+        margin-top: 8px;
+    }
+
+    .ca-field {
+        margin-bottom: 18px;
+    }
+
+    .ca-field-labelrow {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+    }
+
+    .ca-field-label {
+        display: block;
+        margin: 0 0 8px 4px;
+        font-size: 0.95rem;
+        color: var(--ca-cred-title);
+    }
+
+    .ca-field-link {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--ion-color-primary);
+        text-decoration: none;
+        cursor: pointer;
+        white-space: nowrap;
+    }
+
+    .ca-input-item {
+        --background: var(--ca-cred-card);
+        --border-radius: 18px;
+        --border-width: 0;
+        --inner-border-width: 0;
+        --min-height: 56px;
+        --padding-start: 16px;
+        --inner-padding-end: 12px;
+        border-radius: 18px;
+        box-shadow: rgba(0, 0, 0, 0.05) 0 0 0 1px, rgba(0, 0, 0, 0.04) 0 4px 12px;
+
+        .ca-input-icon {
+            margin-inline-end: 12px;
+            color: var(--ca-cred-muted);
+            font-size: 1.1rem;
+        }
+
+        ion-input {
+            --color: var(--ca-cred-title);
+            --placeholder-color: var(--ca-cred-muted);
+            --placeholder-opacity: 1;
+        }
+    }
+
+    // Keep-session + recover row.
+    .ca-cred-options {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin: 8px 4px 24px;
+    }
+
+    .ca-remember {
+        --size: 20px;
+        --checkbox-background-checked: var(--ion-color-primary);
+        --border-color-checked: var(--ion-color-primary);
+        --border-radius: 6px;
+        font-size: 0.9rem;
+        color: var(--ca-cred-title);
+
+        &::part(label) {
+            margin-inline-start: 10px;
+        }
+    }
+
+    // Submit button.
+    .ca-cred-submit {
+        --border-radius: 16px;
+        --box-shadow: none;
+        margin-top: 0;
+        margin-bottom: 0;
+        min-height: 54px;
+        font-weight: 700;
+        text-transform: none;
+    }
+
+    // "o" separator.
+    .ca-cred-separator {
+        position: relative;
+        text-align: center;
+        margin: 24px 0;
+
+        span {
+            position: relative;
+            z-index: 1;
+            padding: 0 14px;
+            background: var(--core-login-background);
+            color: var(--ca-cred-muted);
+            font-size: 0.9rem;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--gray-300);
+        }
+    }
+
+    // Terms footer.
+    .ca-cred-terms {
+        margin: 28px auto 8px;
+        max-width: 340px;
+        text-align: center;
+        font-size: 0.8rem;
+        line-height: 1.4;
+        color: var(--ca-cred-muted);
+    }
+
+}
+
+:host-context(:root.dark) {
+    @if ($core-login-button-outline-dark) {
+        form ion-button {
+            --background: white;
+            --color: var(--core-login-background-dark);
+        }
+    }
+
+    @if ($core-login-loading-color-dark) {
+        core-loading {
+            --loading-background: var(--core-login-background-dark);
+            --loading-text-color: #{$core-login-loading-color-dark};
+            --loading-spinner: #{$core-login-loading-color-dark};
+        }
+    }
+}

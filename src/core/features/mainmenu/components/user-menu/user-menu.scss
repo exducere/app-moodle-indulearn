@@ -1,0 +1,113 @@
+@use "src/theme/globals" as *;
+
+:host {
+    .core-user-menu-separator {
+        --inner-border-width: 0;
+        --border-width: 1px 0 0 0;
+    }
+}
+
+.core-usermenu-siteinfo {
+    text-align: center;
+    ion-label {
+        margin: 0;
+    }
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+}
+
+// Branding of the fixed site (logo from moodle.config.json).
+.ca-usermenu-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px 20px;
+    border-bottom: 1px solid var(--stroke);
+
+    .ca-usermenu-logo {
+        width: 72px;
+        height: 72px;
+        border-radius: 20px;
+        background: #fff;
+        box-shadow: rgba(0, 0, 0, 0.05) 0 0 0 1px, rgba(0, 0, 0, 0.06) 0 8px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        margin-bottom: 12px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            padding: 12px;
+            object-fit: contain;
+            object-position: center;
+        }
+    }
+
+    .ca-usermenu-sitename {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--text-color);
+    }
+
+    .ca-usermenu-urlpill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        max-width: 100%;
+        margin-top: 10px;
+        padding: 6px 14px;
+        border-radius: 999px;
+        background: var(--contrast-background);
+        box-shadow: rgba(0, 0, 0, 0.05) 0 0 0 1px, rgba(0, 0, 0, 0.04) 0 4px 12px;
+        font-size: 0.85rem;
+        color: var(--subdued-text-color);
+        text-decoration: none;
+
+        span:last-child {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .ca-usermenu-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #34c759;
+            flex-shrink: 0;
+        }
+    }
+}
+
+@if ($core-user-hide-siteinfo) {
+    .core-usermenu-siteinfo {
+        display: none;
+    }
+}
+
+core-site-logo {
+    --core-site-logo-margin: 0px auto 8px auto;
+    --core-site-logo-max-height: var(--core-user-menu-site-logo-max-height);
+
+    --core-site-logo-sitename-font: var(--mdl-typography-subtitle-font-lg);
+    --core-site-logo-sitename-margin-bottom: 2px;
+}
+
+@if ($core-user-hide-sitename) {
+    core-site-logo {
+        --core-site-logo-sitename-display: none;
+    }
+}
+
+@if ($core-user-hide-siteurl) {
+    .core-usermenu-siteurl {
+        display: none;
+    }
+}
+
+ion-footer {
+    background: var(--contrast-background);
+}

@@ -1,0 +1,11 @@
+@use "src/theme/globals" as *;
+
+:host {
+    .ion-text-wrap ion-label p {
+        @include ellipsis();
+    }
+
+    .core-course-module-handler {
+        --inner-border-width: 0px;
+    }
+}

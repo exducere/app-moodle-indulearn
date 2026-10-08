@@ -1,0 +1,351 @@
+@use "src/theme/globals" as *;
+
+:host {
+    --list-item-max-width: 600px;
+    --ca-bg: #f4f5fb;
+    --ca-card-bg: #ffffff;
+    --ca-title: #1f2a44;
+    --ca-muted: #8a93a6;
+}
+
+:host ion-content {
+    --background: var(--ca-bg);
+}
+
+// Header.
+.ca-header {
+    ion-toolbar {
+        --background: var(--ca-bg);
+        --border-width: 0 !important;
+        --border-color: transparent;
+        box-shadow: none;
+    }
+
+    .ca-header-title {
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--ca-muted);
+        text-align: center;
+    }
+
+    ion-button {
+        --color: var(--ca-muted);
+    }
+}
+
+// Banner.
+.ca-banner {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    margin: 4px 4px 22px;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 8px 24px;
+
+    .ca-banner-img {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .ca-banner-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 20px;
+        background: linear-gradient(to top, rgba(40, 52, 84, 0.55) 0%, rgba(40, 52, 84, 0.1) 45%, rgba(40, 52, 84, 0) 70%);
+    }
+
+    .ca-banner-title {
+        margin: 0;
+        color: #fff;
+        font-size: 1.6rem;
+        font-weight: 800;
+        line-height: 1.1;
+    }
+
+    .ca-banner-subtitle {
+        margin: 6px 0 0;
+        color: rgba(255, 255, 255, 0.92);
+        font-size: 0.95rem;
+        font-weight: 400;
+    }
+}
+
+.core-login-site-connect {
+    margin-top: 1.4rem;
+}
+
+.item ion-thumbnail {
+    min-width: 50px;
+    min-height: 50px;
+    width: 50px;
+    height: 50px;
+    border-radius: 20%;
+    box-shadow: 0 0 4px var(--gray-200);
+    text-align: center;
+    overflow: hidden;
+
+    img {
+        max-height: 50px;
+        max-width: fit-content;
+        width: auto;
+        height: auto;
+        margin: 0 auto;
+        margin-left: 50%;
+        object-fit: cover;
+        object-position: 50% 50%;
+        @include transform(translate3d(-50%,0,0));
+    }
+    ion-icon {
+        margin: 0 auto;
+        font-size: #{dynamic-font(35px)};
+        height: 50px;
+    }
+}
+
+:host-context([dir="rtl"]) {
+
+    .item ion-thumbnail img {
+        margin-left: 0;
+        margin-right: 50%;
+    }
+
+}
+
+.core-login-site-logo,
+.core-login-site-list,
+.core-login-site-list-found {
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.7s ease-in-out;
+    max-height: 9999px;
+
+    &.hidden {
+        opacity: 0;
+        visibility: hidden;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 0;
+        max-height: 0;
+        display: block !important; /** Avoid breaking the animation */
+    }
+}
+
+ion-list.core-login-site-list {
+    contain: none;
+    overflow: visible;
+    padding: 4px 8px;
+    background: transparent;
+    --ion-item-background: transparent;
+}
+
+.core-login-site-list-found {
+    overflow: visible;
+    padding: 0 2px;
+}
+
+.core-login-site-list-found.dimmed {
+    pointer-events: none;
+    position: relative;
+}
+
+.core-login-site-list-loading {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    background-color: rgb(255 255 255 / 50%);
+    z-index: 1;
+    ion-spinner {
+        margin: 0 auto;
+    }
+}
+
+.core-login-site-nolist-loading {
+    margin-top: 16px;
+    text-align: center;
+}
+
+.item.core-login-site-list-title {
+    ion-label, ion-label h2.item-heading {
+        margin-top: 0;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    ion-content .core-login-site-logo {
+        margin-top: 20%;
+        &.hidden {
+            margin-top: 0;
+        }
+    }
+}
+
+.core-login-entered-site {
+    background-color: var(--light);
+
+    ion-thumbnail {
+        box-shadow: 0 0 4px var(--gray-300);
+    }
+}
+
+.core-login-default-icon {
+    filter: grayscale(100%);
+}
+
+// Search bar.
+.ca-site-search {
+    --border-radius: 18px;
+    --background: var(--ca-card-bg);
+    --box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 16px;
+    --placeholder-color: var(--ca-muted);
+    --placeholder-opacity: 1;
+    --icon-color: var(--ca-muted);
+    padding: 0 4px;
+    margin-bottom: 26px;
+
+    --min-height: 56px;
+}
+
+// "Tus cuentas" header row.
+.ca-sites-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 14px;
+    padding: 0 8px;
+}
+
+.ca-sites-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ca-muted);
+}
+
+.ca-sites-count {
+    font-size: 0.85rem;
+    color: var(--ca-muted);
+}
+
+// Site grid (2 columns).
+.ca-sites-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    overflow: visible;
+    padding: 0 4px 4px;
+}
+
+// Site card (grid cell).
+.ca-grid-item {
+    --background: var(--ca-card-bg);
+    --border-radius: 22px;
+    --padding-start: 0;
+    --padding-end: 0;
+    --inner-padding-start: 0;
+    --inner-padding-end: 0;
+    --inner-padding-top: 0;
+    --inner-padding-bottom: 0;
+    --min-height: 0;
+
+    border-radius: 22px;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 8px 24px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+
+    &::part(native) {
+        border-radius: 22px;
+    }
+
+    .ca-grid-card {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 16px;
+        min-width: 0;
+    }
+
+    .ca-grid-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin-bottom: 14px;
+    }
+
+    .ca-grid-thumb {
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
+        background: #fff;
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            width: 100%;
+            height: 100%;
+            padding: 9px;
+            object-fit: contain;
+            object-position: center;
+        }
+    }
+
+    .ca-grid-chevron {
+        margin-top: 4px;
+        font-size: 1.1rem;
+        color: var(--ca-muted);
+        flex-shrink: 0;
+    }
+
+    .ca-grid-text {
+        min-width: 0;
+    }
+
+    .ca-grid-title {
+        margin: 0 0 4px;
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: var(--ca-title);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .ca-grid-url {
+        margin: 0;
+        font-size: 0.85rem;
+        color: var(--ca-muted);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+// Bottom help link.
+.core-login-need-help {
+    --color: var(--ion-color-primary);
+    font-weight: 600;
+    margin-top: 18px;
+}
+
+// App version footer.
+.ca-app-version {
+    margin-top: 24px;
+    padding-bottom: 8px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--ca-muted);
+}
